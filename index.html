@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Platnick – Research Scientist</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-gu+PQZmUOr5ipKOktz8XYe2Lwusk3P4UXxgRCKT23kvOF81n8XwXdg8Ohi32hQtdhMax3o6u2gWS5K8Kupbujw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --clr-bg: #FFF8F0;            /* beige canvas */
+      --clr-light: #FFFFFF;         /* card background */
+      --clr-text: #000000;          /* primary text */
+      --clr-muted: #4A5A6A;         /* muted text */
+      --clr-primary: #3498DB;       /* link accent */
+      --clr-highlight: #E74C3C;     /* CTA highlight */
+      --max-width: 1100px;
+      --transition: all 0.3s ease;
+    }
+
+    * {margin:0;padding:0;box-sizing:border-box;}
+
+    html {scroll-behavior: smooth;}
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      line-height: 1.8;
+      font-size: 1rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {color: var(--clr-primary);text-decoration:none;transition:var(--transition);}
+    a:hover,a:focus-visible {color: var(--clr-highlight);}
+    a:focus-visible,button:focus-visible {outline:2px solid var(--clr-highlight);outline-offset:3px;}
+
+    header {width:100%;background:rgba(255,255,255,0.9);position:sticky;top:0;z-index:1000;backdrop-filter:blur(10px);}
+    nav {max-width:var(--max-width);margin:0 auto;padding:1rem;display:flex;justify-content:space-between;align-items:center;}
+    .logo {font-family:'Merriweather',serif;font-size:1.5rem;font-weight:700;letter-spacing:0.5px;}
+    .nav-links {list-style:none;display:flex;gap:1.5rem;}
+    .nav-links li {position:relative;}
+    .nav-links li::after {content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--clr-primary);border-radius:2px;transition:var(--transition);}
+    .nav-links li:hover::after,.nav-links li:focus-within::after{width:100%;}
+
+    /* Hero */
+    .hero {display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:85vh;text-align:center;padding:3rem 1rem;}
+    .headshot {width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid var(--clr-primary);margin-bottom:1.5rem;}
+    .hero h1 {font-family:'Merriweather',serif;font-size:clamp(2rem,4vw,3rem);margin-bottom:0.5rem;}
+    .hero .tagline {font-size:1.2rem;margin-bottom:1rem;color:var(--clr-muted);max-width:650px;}
+    .hero p {max-width:700px;margin:0 auto 1.5rem;color:var(--clr-muted);font-size:1.05rem;}
+
+    .btn {background:transparent;border:2px solid var(--clr-primary);padding:0.75rem 1.5rem;border-radius:0.5rem;color:var(--clr-primary);font-weight:600;cursor:pointer;transition:var(--transition), box-shadow 0.2s;}
+    .btn:hover {background:var(--clr-highlight);color:#fff;box-shadow:0 4px 10px rgba(0,0,0,0.15);}
+
+    /* Generic section */
+    section {max-width:var(--max-width);margin:0 auto;padding:4rem 1rem;}
+    section h2 {font-family:'Merriweather',serif;font-size:2rem;margin-bottom:2rem;color:var(--clr-primary);}
+
+    .card-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
+    .card {background:var(--clr-light);padding:2rem;border-radius:0.75rem;box-shadow:0 2px 4px rgba(0,0,0,0.1);display:flex;flex-direction:column;transition:var(--transition), box-shadow 0.2s;}
+    .card:hover {transform:translateY(-6px);box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+    .card h3 {margin-bottom:0.5rem;font-size:1.25rem;color:var(--clr-text);}
+    .card p {color:var(--clr-muted);font-size:0.95rem;}
+
+    /* Timeline */
+    .timeline {position:relative;margin-left:1rem;}
+    .timeline::before {content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:var(--clr-primary);}
+    .timeline-item {margin-left:2rem;margin-bottom:2rem;}
+    .timeline-item h3 {font-size:1.1rem;margin-bottom:0.25rem;color:var(--clr-text);}
+    .timeline-item span {color:var(--clr-muted);font-size:0.9rem;}
+    .timeline-item p {color:var(--clr-muted);font-size:0.9rem;margin-top:0.25rem;}
+
+    /* Publications */
+    .pub-list {list-style:none;padding-left:0;}
+    .pub-item {margin-bottom:1.5rem;}
+    .pub-title {font-weight:600;color:var(--clr-text);}
+    .pub-meta {color:var(--clr-muted);font-size:0.9rem;}
+
+    /* Footer */
+    footer {text-align:center;padding:2rem 1rem;color:var(--clr-muted);font-size:0.85rem;}
+
+    /* Mobile nav */
+    .hamburger {display:none;flex-direction:column;gap:4px;cursor:pointer;}
+    .hamburger span {width:24px;height:3px;background:var(--clr-text);transition:var(--transition);}
+    @media(max-width:768px){
+      .nav-links {position:fixed;top:70px;right:-100%;background:var(--clr-light);flex-direction:column;gap:2rem;width:200px;padding:2rem;transition:var(--transition);height:calc(100vh - 70px);}
+      .nav-links.open {right:0;}
+      .hamburger {display:flex;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo"><a href="#home">D. Platnick</a></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <img src="profile_photo.jpg" alt="Daniel Platnick headshot" class="headshot" loading="lazy" />
+      <h1>Daniel Platnick</h1>
+      <p class="tagline">Let's create AI to solve the world's most complicated problems.</p>
+      <p>Senior AI Research Scientist leading Perspective‑Aware AI research at Flybits Labs in collaboration with MIT Media Lab. Passionate about deep learning, signal processing, and graph theory. In my spare time I enjoy reading recent AI research, playing piano, and talking with friends.</p>
+      <a href="#contact" class="btn">Get in touch</a>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>About</h2>
+      <p>I research <strong>Perspective‑Aware AI (PAi)</strong>: neurosymbolic systems that build graph‑based Chronicles from multimodal data so agents can reason from diverse viewpoints. My work spans identity modeling, generative agents, and XR personalization.</p>
+      <p>Find my scholarly work on <a href="https://scholar.google.ca/citations?user=0J9wQQQAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+    </section>
+
+    <!-- Research Interests -->
+        <!-- Research Interests -->
+    <section id="research">
+      <h2>Research Interests</h2>
+      <div class="card-grid">
+        <div class="card"><h3>Perspective‑Aware AI</h3><p>Graph‑based identity representations enabling agents to reason through evolving perspectives.</p></div>
+        <div class="card"><h3>Generative Agent Systems</h3><p>Agent‑based simulations augmented with Chronicles for long‑term consistency.</p></div>
+        <div class="card"><h3>Neurosymbolic Methods</h3><p>Combining deep learning and symbolic reasoning for interpretable decision‑making.</p></div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item"><h3>Senior AI Research Scientist – Flybits</h3><span>Jan 2025 – Present (Full‑time)</span><p>Collaborating with MIT Media Lab on neurosymbolic PAi & Human‑AI Agents. Keynote on PAi at UofT AI's ConferenceX (Jan 25 2025).</p></div>
+        <div class="timeline-item"><h3>AI Researcher – Flybits</h3><span>Jun 2024 – Dec 2024 (Contract)</span><p>Co‑authored PAi papers at IEEE HPEC and MDPI Information.</p></div>
+        <div class="timeline-item"><h3>Graduate Student Researcher – Toronto Metropolitan University</h3><span>Sep 2023 – Dec 2024</span><p>Deep learning & automated planning under Rick Valenzano. Published <em>GANsemble</em> at CAIC 2024.</p></div>
+        <div class="timeline-item"><h3>Faculty Affiliate Researcher – Vector Institute</h3><span>Aug 2023 – Nov 2024</span><p>Analyzed heuristic search; published runtime comparisons at ICAPS 2024 (HSDIP).</p></div>
+        <div class="timeline-item"><h3>Lead ML Engineer – Vosyn</h3><span>Jan 2024 – May 2024</span><p>Invented Preset‑Voice Matching; paper at ACL 2024 PrivateNLP.</p></div>
+        <div class="timeline-item"><h3>Teaching Assistant – Toronto Metropolitan University</h3><span>Sep 2022 – Aug 2023</span><p>Taught CPS109 & CPS118; designed labs and graded assessments.</p></div>
+        <div class="timeline-item"><h3>Machine Learning Researcher – Ryerson University</h3><span>May 2021 – Oct 2022</span><p>Deep unfolding for stripe noise removal; paper at IJCNN 2022.</p></div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="timeline">
+        <div class="timeline-item"><h3>MSc Computer Science – Toronto Metropolitan University</h3><span>Sep 2022 – Dec 2024 | GPA 4.25/4.33</span><p>Thesis on escaping uninformative regions in combinatorial search. Published 5 AI papers (first author on 4).</p></div>
+        <div class="timeline-item"><h3>BA International Economics & Finance – Ryerson University</h3><span>Sep 2014 – Dec 2021</span><p>Dean's List; Table Tennis A‑Team; ranked #1 Smash Bros Melee at Ryerson.</p></div>
+      </div>
+    </section>
+
+    <!-- Publications (selected) -->
+    <section id="publications">
+      <h2>Selected Publications</h2>
+      <ul class="pub-list">
+        <li class="pub-item">
+          <span class="pub-title">Perspective-Aware AI in Extended Reality</span><br>
+          <span class="pub-meta">International Conference on eXtended Reality • June 17 2025</span><br>
+          <a href="https://www.media.mit.edu/publications/perspective-aware-ai-pai-can-shape-the-future-of-extended-reality-xr/" target="_blank" rel="noopener">Paper</a>
+        </li>
+        <li class="pub-item">
+          <span class="pub-title">Enabling Perspective-Aware AI with Contextual Scene Graph Generation</span><br>
+          <span class="pub-meta">MDPI Information • Dec 2 2024</span><br>
+          <a href="https://www.mdpi.com/2078-2489/15/12/766" target="_blank" rel="noopener">Paper</a>
+        </li>
+        <li class="pub-item">
+          <span class="pub-title">Perspective-Aware AI for Augmenting Critical Decision Making</span><br>
+          <span class="pub-meta">IEEE HPEC • Sep 26 2024</span><br>
+          <a href="https://www.techrxiv.org/users/871455/articles/1252381-perspective-aware-ai-pai-for-augmenting-critical-decision-making" target="_blank" rel="noopener">Paper</a>
+        </li>
+        <li class="pub-item">
+          <span class="pub-title">Preset-Voice Matching for Privacy-Regulated S2ST Systems</span><br>
+          <span class="pub-meta">ACL PrivateNLP • Jun 21 2024</span><br>
+          <a href="https://aclanthology.org/2024.privatenlp-1.6/" target="_blank" rel="noopener">Paper</a>
+        </li>
+        <li class="pub-item">
+          <span class="pub-title">Expected Runtime Comparisons Between BrFS & RRW</span><br>
+          <span class="pub-meta">ICAPS HSDIP • Apr 26 2024</span><br>
+          <a href="https://icaps24.icaps-conference.org/program/workshops/hsdip-papers/paper_12.pdf" target="_blank" rel="noopener">Paper</a>
+        </li>
+        <li class="pub-item">
+          <span class="pub-title">GANsemble for Synthetic Microplastics Data</span><br>
+          <span class="pub-meta">CAIC • Apr 3 2024</span><br>
+          <a href="https://arxiv.org/abs/2404.07356" target="_blank" rel="noopener">Paper</a>
+        </li>
+        <li class="pub-item">
+          <span class="pub-title">Deep Unfolding for Iterative Stripe Noise Removal</span><br>
+          <span class="pub-meta">IJCNN • Jul 18 2022</span><br>
+          <a href="https://arxiv.org/abs/2209.14973" target="_blank" rel="noopener">Paper</a>
+        </li>
+      </ul>
+      <p><a href="https://scholar.google.ca/citations?user=0J9wQQQAAAAJ&hl=en" class="btn" target="_blank" rel="noopener">Full list on Google Scholar</a></p>
+    </section>
+
+    <!-- Projects (unchanged) -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="card-grid">
+        <div class="card"><h3>Foundation Swarm</h3><p>RL‑tuned specialist agents optimizing group rewards.</p></div>
+        <div class="card"><h3>PAi Dataset (PAiD)</h3><p>Synthetic multimodal identity dataset for PAi training.</p></div>
+        <div class="card"><h3>Generative Air Traffic Simulation</h3><p>Modeling pilots & controllers with PAi Chronicles.</p></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Open to collaborations, speaking engagements, and advisory roles.</p>
+      <p>Email: <a href="mailto:daniel.platnick@flybits.com">daniel.platnick@flybits.com</a></p>
+      <p>
+        <a href="https://www.linkedin.com/in/danielplatnick" aria-label="LinkedIn"><i class="fa-brands fa-linkedin fa-lg"></i></a>&nbsp;
+        <a href="https://github.com/dplatnick" aria-label="GitHub"><i class="fa-brands fa-github fa-lg"></i></a>&nbsp;
+        <a href="https://scholar.google.ca/citations?user=0J9wQQQAAAAJ" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap fa-lg"></i></a>
+      </p>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> Daniel Platnick • Built with ❤️ using HTML, CSS & JS</footer>
+
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+    // Close nav after link click on mobile
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
